@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Itim&family=Sacramento&family=Yellowtail&family=Fredoka:wght@700&family=Barlow+Condensed:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1b2436; --cream:#f6f0dc; --cream2:#efe7cf; --blue:#5b7fc7; --sky:#cfe3ea;
+    --red:#c8392f; --pink:#d9667f; --ink:#4a3b32;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    background-color:var(--navy);
+    /* ผ้าลูกฟูกสีกรม */
+    background-image:
+      repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px,rgba(0,0,0,.25) 3px 4px,transparent 4px 6px),
+      radial-gradient(ellipse at 50% 40%,#26324a 0,#141b29 80%);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    overflow:hidden;font-family:'Itim',sans-serif;color:var(--ink);
+    user-select:none;-webkit-user-select:none;
+  }
+  .stage{width:min(94vw,1100px);display:flex;justify-content:center}
+  #book{margin:0 auto}
+  .counter{margin-top:18px;color:rgba(255,255,255,.75);font:400 13px/1 'Barlow Condensed',sans-serif;letter-spacing:.08em}
+
+  /* ---------- page base ---------- */
+  .page{background:var(--cream);overflow:hidden}
+  .inner{position:absolute;top:0;left:0;width:520px;height:350px;transform-origin:0 0;overflow:hidden}
+  .blank .inner{background:linear-gradient(90deg,#efe8d2 0%,var(--cream) 30%,#f8f3e3 85%,#e9e1c8 100%)}
+  .abs{position:absolute}
+
+  /* photo slot */
+  .ph{position:absolute;overflow:hidden;background:#d9d4c7;display:flex;align-items:center;justify-content:center;
+      color:#8b8270;font-size:11px;text-align:center}
+  .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .ph.round{border-radius:50%}
+  .ph.bw img{filter:grayscale(1) contrast(1.05)}
+
+  /* ---------- 1. cover ---------- */
+  .cover .inner{background:radial-gradient(circle at 50% 45%,#fbf7e8,var(--cream) 70%)}
+  .age-wrap{position:absolute;left:50%;top:92px;transform:translateX(-50%);display:flex;align-items:center;gap:0}
+  .digit{font:700 112px/1 'Fredoka',sans-serif;color:transparent;
+    background:repeating-linear-gradient(-55deg,#4f74c2 0 3px,#86a5e0 3px 5px,#4f74c2 5px 8px);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-stroke:2px #4466b0;
+    filter:drop-shadow(0 2px 0 rgba(68,102,176,.25))}
+  .cover-face{position:relative;width:96px;height:114px;margin:0 -12px;z-index:2;top:16px}
+  .cover-face .ph{inset:0;border-radius:46% 46% 50% 50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+  .hat{position:absolute;left:50%;top:-44px;transform:translateX(-50%) rotate(8deg);width:42px;height:50px;z-index:3;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+    background:repeating-linear-gradient(-30deg,#f2a33a 0 7px,#e8542e 7px 12px)}
+  .hat-pom{position:absolute;left:50%;top:-54px;transform:translateX(-30%);width:16px;height:16px;border-radius:50%;background:#e23b2b;z-index:4;
+    box-shadow:0 0 0 3px #e23b2b33}
+  .hat-band{position:absolute;left:50%;top:-2px;transform:translateX(-50%) rotate(8deg);width:48px;height:8px;border-radius:4px;background:#d8402c;z-index:4}
+  .hb{position:absolute;left:0;right:0;text-align:center;top:250px;font:400 34px/1 'Sacramento',cursive;color:#a8746a}
+  .hb2{position:absolute;left:0;right:0;text-align:center;top:288px;font:400 20px/1 'Sacramento',cursive;color:#b8877c}
+
+  /* ---------- inside cover photo ---------- */
+  .snap{position:absolute;left:96px;top:44px;width:320px;height:262px;background:#fff;padding:12px 12px 32px;
+    transform:rotate(-4deg);box-shadow:0 6px 16px rgba(74,59,50,.22)}
+  .snap .ph{position:relative;width:100%;height:100%}
+  .washi{position:absolute;left:50%;top:-12px;width:96px;height:26px;transform:translateX(-50%) rotate(3deg);
+    background:repeating-linear-gradient(90deg,rgba(143,147,184,.75) 0 6px,rgba(247,246,242,.8) 6px 12px)}
+
+  /* ---------- 3. letter ---------- */
+  .stripes{background:repeating-linear-gradient(90deg,#f7f6f2 0 9px,#8f93b8 9px 15px)}
+  .env{position:absolute;left:150px;top:62px;width:230px;height:250px}
+  .env-back{position:absolute;left:0;bottom:0;width:230px;height:150px;background:#ece5c6;border-radius:3px}
+  .env-flap{position:absolute;left:0;top:-4px;width:230px;height:130px;background:#e9e1bf;clip-path:polygon(0 100%,50% 0,100% 100%)}
+  .env-letter{position:absolute;left:22px;top:28px;width:186px;height:150px;background:#f7f2dc;box-shadow:0 1px 4px rgba(0,0,0,.12);
+    padding:12px 12px;font-size:11.5px;line-height:1.5;color:#5a4a3c;text-align:center;white-space:pre-line}
+  .env-front{position:absolute;left:0;bottom:0;width:230px;height:96px;background:#f1ebcf;
+    clip-path:polygon(0 0,50% 30%,100% 0,100% 100%,0 100%);
+    background-image:radial-gradient(#7d6a55 1.3px,transparent 1.6px);background-size:30px 26px;background-position:8px 50px}
+  .env-shadow{position:absolute;left:4px;bottom:-6px;width:226px;height:12px;background:rgba(0,0,0,.12);filter:blur(4px)}
+
+  /* ---------- 5. circle photo ---------- */
+  .scallop{position:absolute;left:170px;top:52px;width:180px;height:180px;
+    background:repeating-linear-gradient(90deg,#e4e6e0 0 6px,#c9cdc6 6px 9px);box-shadow:inset 0 0 0 2px #fff}
+  .scallop-ring{position:absolute;left:166px;top:48px;width:188px;height:188px;background:#c6cbc7}
+  .circle-face{left:205px;top:78px;width:110px;height:128px;border-radius:46% 46% 50% 50%;border:3px solid #fff}
+  .circle-face img{object-position:40% 30%}
+  .caption{position:absolute;left:0;right:0;text-align:center;font-size:13px;line-height:1.6;color:#8c6f4f;white-space:pre-line}
+
+  /* ---------- 7. birthday ---------- */
+  .burst{position:absolute;left:58px;top:56px;width:250px;height:230px;background:#ecd6cd}
+  .candle{position:absolute;left:174px;top:160px;width:18px;height:200px;
+    background:repeating-linear-gradient(-40deg,#67c3cf 0 8px,#3fa6b5 8px 12px)}
+  .flame{position:absolute;left:174px;top:132px;width:18px;height:28px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+    background:radial-gradient(circle at 50% 70%,#fff8c8 0 30%,#f7cf55 55%,#f0a33a 90%);box-shadow:0 0 14px 5px rgba(247,207,85,.55);
+    animation:flick .14s ease-in-out infinite alternate;transform-origin:50% 100%}
+  @keyframes flick{to{transform:scaleY(1.1) skewX(3deg)}}
+  .bd-word{position:absolute;font:400 38px/1 'Yellowtail',cursive;color:#a8282e}
+  .sky-panel{position:absolute;right:0;top:0;width:150px;height:350px;
+    background:repeating-linear-gradient(90deg,#d6e7ec 0 4px,#c4dbe2 4px 6px);
+    display:flex;align-items:center;justify-content:center;padding:18px;
+    font-size:13px;line-height:1.7;color:#d0607a;text-align:center;white-space:pre-line}
+  .sparkle{position:absolute;width:4px;height:4px;border-radius:50%;background:#c9a79a}
+
+  /* ---------- 9. clock ---------- */
+  .plaid{position:absolute;left:0;top:0;width:120px;height:350px;background-color:#e7eef3;
+    background-image:repeating-linear-gradient(90deg,rgba(91,127,199,.35) 0 6px,transparent 6px 22px,rgba(91,127,199,.18) 22px 26px,transparent 26px 40px),
+    repeating-linear-gradient(0deg,rgba(91,127,199,.35) 0 6px,transparent 6px 22px,rgba(91,127,199,.18) 22px 26px,transparent 26px 40px)}
+  .denim{position:absolute;left:120px;top:0;width:150px;height:350px;background-color:#5f7fad;
+    background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.12) 0 1px,transparent 1px 3px),repeating-linear-gradient(-45deg,rgba(0,0,0,.12) 0 1px,transparent 1px 3px)}
+  .lace-h{position:absolute;height:22px;background:radial-gradient(circle at 50% 0,#fbfaf4 8px,transparent 9px) 0 0/16px 22px repeat-x,
+    radial-gradient(#e5e1d3 1.5px,transparent 2px) 0 4px/8px 8px;background-color:#fbfaf4cc}
+  .frame{position:absolute;left:70px;top:58px;width:156px;height:226px;background:#f4f1e6;
+    box-shadow:0 0 0 6px #f4f1e6;outline:2px dotted #cfc8b4;outline-offset:-10px}
+  .oval{left:96px;top:86px;width:104px;height:170px;border-radius:50%}
+  .clock-side{position:absolute;left:270px;top:0;width:250px;height:350px;background:var(--cream)}
+  .clock{position:absolute;left:125px;top:175px;width:0;height:0;transform:rotate(-90deg)}
+  .clock span{position:absolute;font:300 22px/1 'Barlow Condensed',sans-serif;color:#5f7fc4;white-space:nowrap;transform:translate(-50%,-50%)}
+  .hand{position:absolute;left:0;top:0;transform-origin:0 50%;height:2px;border-radius:2px}
+  .hub{position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;background:#e6852f}
+  .sun{position:absolute;font-size:22px;color:#e9952f;line-height:1}
+
+  /* ---------- 11. b&w photo ---------- */
+  .full{left:0;top:0;width:520px;height:350px}
+  .dot{position:absolute;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font:700 12px/1 'Fredoka',sans-serif;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+
+  /* ---------- 13. scrapbook ---------- */
+  .dots-bg{position:absolute;left:0;top:0;width:270px;height:350px;background-color:#f3eed6;
+    background-image:radial-gradient(#cfc6a4 1.2px,transparent 1.6px);background-size:12px 12px}
+  .tin{position:absolute;width:150px;height:100px;border-radius:16px;
+    background:linear-gradient(135deg,#d8d8d4,#a9aaa6 40%,#e2e2de 60%,#9fa09c);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+  .tin::after{content:"";position:absolute;inset:8px;border-radius:11px;background:linear-gradient(135deg,#c9cac6,#b3b4b0)}
+  .tin > *{z-index:1}
+  .note{position:absolute;white-space:pre-line;background:#f5e472;padding:8px 10px;font-size:13px;line-height:1.3;color:#6a5a2a;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+  .tape{position:absolute;background:#f0f0ea;padding:2px 8px;font:400 12px/1.2 'Barlow Condensed',sans-serif;letter-spacing:.06em;color:#8a5040;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+  .navy-side{position:absolute;left:270px;top:0;width:250px;height:350px;background:repeating-linear-gradient(90deg,#2c3a64 0 6px,#3d4d7c 6px 8px)}
+  .lace-v{position:absolute;right:0;top:0;width:22px;height:350px;
+    background:radial-gradient(circle at 0 50%,transparent 6px,#fbfaf4 7px) 0 0/22px 16px repeat-y}
+  .postcard{position:absolute;left:288px;top:88px;width:206px;height:170px;background:#f4eedb;padding:10px 12px;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+  .postcard h4{font:400 11px/1 'Barlow Condensed',sans-serif;letter-spacing:.3em;text-align:center;color:#8a7a66;margin-bottom:8px;border-bottom:1px solid #d8ceb8;padding-bottom:6px}
+  .pc-cols{display:flex;gap:8px;font-size:10.5px;line-height:1.6;color:#c4473c;white-space:pre-line}
+  .pc-cols div{flex:1}
+  .pc-cols div:first-child{border-right:1px solid #d8ceb8;padding-right:8px}
+
+</style>
+</head>
+<body>
+
+<!-- ===========================================================
+  ใส่รูปไว้ในโฟลเดอร์ images ตามชื่อไฟล์ในส่วน CONFIG ด้านล่าง
+  ใส่เพลงชื่อ music.mp3 ไว้ข้างไฟล์นี้ (ถ้าไม่มีก็ไม่เป็นไร)
+  แก้ข้อความทั้งหมดได้ในส่วน CONFIG ในสคริปต์
+=========================================================== -->
+
+<div class="stage"><div id="book">
+
+  <!-- 1 ปก -->
+  <div class="page cover"><div class="inner">
+    <div class="age-wrap">
+      <span class="digit" id="ageA"></span>
+      <div class="cover-face">
+        <div class="hat-pom"></div><div class="hat"></div><div class="hat-band"></div>
+        <div class="ph" data-img="face1" data-label="รูปหน้า<br>(ตัดพื้นหลัง)"></div>
+      </div>
+      <span class="digit" id="ageB"></span>
+    </div>
+    <div class="stars" data-stars="cover"></div>
+    <div class="hb">happy birthday</div>
+    <div class="hb2">have a nice birthday</div>
+  </div></div>
+  <!-- ด้านในปก (ฝั่งซ้ายตอนเปิดปก) -->
+  <div class="page blank"><div class="inner">
+    <div class="snap">
+      <div class="ph" data-img="inside" data-label="รูปด้านในปก"></div>
+      <div class="washi"></div>
+    </div>
+  </div></div>
+
+  <!-- 2 จดหมาย -->
+  <div class="page"><div class="inner stripes">
+    <div class="env">
+      <div class="env-shadow"></div>
+      <div class="env-back"></div>
+      <div class="env-flap" style="top:-4px"></div>
+      <div class="env-letter" id="letter"></div>
+      <div class="env-front"></div>
+    </div>
+  </div></div>
+  <div class="page blank"><div class="inner"></div></div>
+
+  <!-- 3 รูปวงกลม -->
+  <div class="page"><div class="inner">
+    <div class="scallop-ring" data-scallop></div>
+    <div class="scallop" data-scallop></div>
+    <div class="ph circle-face" data-img="face2" data-label="รูปหน้า"></div>
+    <div class="stars" data-stars="circle"></div>
+    <div class="caption" id="cap1" style="top:256px"></div>
+  </div></div>
+  <div class="page blank"><div class="inner"></div></div>
+
+  <!-- 4 Birth Day -->
+  <div class="page"><div class="inner">
+    <div class="burst" id="burst"></div>
+    <div class="candle"></div><div class="flame"></div>
+    <div class="bd-word" style="left:62px;top:212px">Birth</div>
+    <div class="bd-word" style="left:212px;top:212px">Day</div>
+    <div class="ph round bw" data-img="small1" data-label="1" style="left:150px;top:18px;width:44px;height:44px"></div>
+    <div class="ph round bw" data-img="small2" data-label="2" style="left:290px;top:30px;width:40px;height:40px"></div>
+    <div class="ph round bw" data-img="small3" data-label="3" style="left:212px;top:72px;width:30px;height:30px"></div>
+    <div class="ph round bw" data-img="small4" data-label="4" style="left:44px;top:282px;width:32px;height:32px"></div>
+    <div class="ph round bw" data-img="small5" data-label="5" style="left:268px;top:270px;width:36px;height:36px"></div>
+    <div id="sparkles"></div>
+    <div class="sky-panel" id="cap2"></div>
+  </div></div>
+  <div class="page blank"><div class="inner"></div></div>
+
+  <!-- 5 นาฬิกา -->
+  <div class="page"><div class="inner">
+    <div class="plaid"></div><div class="denim"></div>
+    <div class="lace-h" style="left:150px;top:0;width:110px"></div>
+    <div class="lace-h" style="left:150px;bottom:0;width:110px;transform:scaleY(-1)"></div>
+    <div class="frame"></div>
+    <div class="ph oval bw" data-img="oval" data-label="รูปวงรี"></div>
+    <div class="clock-side">
+      <div class="sun" style="left:22px;top:24px">✺</div><div class="sun" style="right:22px;top:24px">✺</div>
+      <div class="sun" style="left:22px;bottom:24px">✺</div><div class="sun" style="right:22px;bottom:24px">✺</div>
+      <div class="clock" id="clock"></div>
+    </div>
+  </div></div>
+  <div class="page blank"><div class="inner"></div></div>
+
+  <!-- 6 รูปขาวดำ + จุด hbd -->
+  <div class="page"><div class="inner">
+    <div class="ph full" data-img="big" data-label="รูปใหญ่เต็มหน้า"></div>
+    <div id="hbdDots"></div>
+  </div></div>
+  <div class="page blank"><div class="inner"></div></div>
+
+  <!-- 7 สมุดภาพ + โปสการ์ด -->
+  <div class="page"><div class="inner">
+    <div class="dots-bg"></div>
+    <div class="tin" style="left:58px;top:62px;transform:rotate(-14deg)">
+      <div class="note" id="tinNote" style="left:22px;top:24px;transform:rotate(4deg)"></div>
+      <div class="abs" style="left:110px;top:14px;font-size:20px">🌸</div>
+      <div class="abs" style="left:96px;top:58px;width:24px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px #0003"></div>
+    </div>
+    <div class="tin" style="left:78px;top:180px;transform:rotate(-14deg)">
+      <div class="abs" style="left:18px;top:20px;font-size:22px">💗</div>
+      <div class="ph" data-img="tin" data-label="รูป" style="left:82px;top:16px;width:52px;height:66px;border:3px solid #fff"></div>
+    </div>
+    <div class="tape" id="tape1" style="left:150px;top:170px;transform:rotate(-8deg)"></div>
+    <div class="tape" id="tape2" style="left:60px;top:282px;transform:rotate(-12deg);background:#cfe0f6;color:#3a5a9a"></div>
+    <div class="navy-side"></div>
+    <div class="lace-v"></div>
+    <div class="postcard"><h4>POST CARD</h4><div class="pc-cols"><div id="pc1"></div><div id="pc2"></div></div></div>
+  </div></div>
+
+</div></div>
+<div class="counter" id="counter">1 / 13</div>
+<audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+/* ======================= CONFIG: แก้ตรงนี้ ======================= */
+const CONFIG = {
+  age: "23",                       // อายุ (2 หลัก) ใช้ทั้งหน้าปกและหน้าจุด hbd
+  images: {                        // ชื่อไฟล์รูปในโฟลเดอร์ images
+    face1:  "images/face1.jpg",    // ปก: รูปหน้าแบบตัดพื้นหลัง (PNG)
+    face2:  "images/face2.jpg",    // หน้า 3: รูปหน้าในกรอบวงกลม
+    small1: "images/small1.jpg",   // หน้า Birth Day: รูปวงกลมเล็ก 5 รูป
+    small2: "images/small2.jpg",
+    small3: "images/small3.jpg",
+    small4: "images/small4.jpg",
+    small5: "images/small5.jpg",
+    oval:   "images/oval.jpg",     // หน้านาฬิกา: รูปในกรอบวงรี
+    big:    "images/big.jpg",      // หน้ารูปใหญ่ขาวดำ
+    tin:    "images/tin.jpg",      // หน้าสมุดภาพ: รูปในกล่อง
+    inside: "images/inside.jpg"    // ด้านในปก (ฝั่งซ้ายตอนเปิดปก)
+  },
+  letter: `สุขสันต์วันเกิดนะ
+ขอบคุณที่เข้ามาในชีวิต
+ชีวิตดีขึ้นมาก
+ตั้งแต่มีเธออยู่ด้วย
+หวังว่าวันของเธอ
+จะวิเศษเหมือนตัวเธอ`,
+  caption1: `หวังว่าชีวิตจะเต็มไปด้วยความสุข
+และพาเธอไปสู่ทุกสิ่งที่เธอควรจะได้รับ`,
+  caption2: `ขอให้วันเกิดปีนี้
+นำพาเธอเข้าใกล้
+ความฝันทุกประการ
+เราจะอยู่ตรงนี้เสมอ
+คอยเป็นกำลังใจ
+สุขสันต์วันเกิดนะ`,
+  tinNote: "สุขสันต์\nวันเกิด !",
+  tape1: "so cute",
+  tape2: "คนเก่ง",
+  postcard1: `สุขสันต์วันเกิดนะ
+ขอให้ปีนี้เป็นปีที่ดีที่สุด
+มีแต่รอยยิ้ม ความสุข
+และเรื่องดีๆ ที่เธอ
+สมควรได้รับ`,
+  postcard2: `ขอบคุณทุกความทรงจำ
+อยู่ด้วยกันแบบนี้
+ไปนานๆ นะ
+รักนะ ♡`
+};
+/* ================================================================ */
+
+const $ = s => document.querySelector(s);
+const PW = 520, PH = 350;
+
+// --- text ---
+$('#ageA').textContent = CONFIG.age[0];
+$('#ageB').textContent = CONFIG.age[1] || '';
+$('#letter').textContent = CONFIG.letter;
+$('#cap1').textContent = CONFIG.caption1;
+$('#cap2').textContent = CONFIG.caption2;
+$('#tinNote').textContent = CONFIG.tinNote;
+$('#tape1').textContent = CONFIG.tape1;
+$('#tape2').textContent = CONFIG.tape2;
+$('#pc1').textContent = CONFIG.postcard1;
+$('#pc2').textContent = CONFIG.postcard2;
+
+// --- photos (placeholder until file exists) ---
+document.querySelectorAll('.ph[data-img]').forEach(el => {
+  el.innerHTML = el.dataset.label;
+  const img = new Image();
+  img.onload = () => { el.innerHTML = ''; el.style.background = 'transparent'; el.appendChild(img); };
+  img.src = CONFIG.images[el.dataset.img];
+});
+
+// --- stars ---
+function star(x, y, size, color){
+  const s = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  s.setAttribute('viewBox','0 0 24 24');
+  s.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${size}px;height:${size}px;transform:rotate(${Math.random()*40-20}deg)`;
+  s.innerHTML = `<path fill="${color}" d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5L7 14l-5.3-5 7.2-.9z"/>`;
+  return s;
+}
+const starSets = {
+  cover: [[196,70,12,'#a5d36a'],[300,42,14,'#e7d36b'],[318,86,10,'#c9a7a0'],[344,96,16,'#a5d36a'],[178,128,8,'#c9a7a0'],[360,140,8,'#c9a7a0'],[262,40,9,'#c9c0b4']],
+  circle:[[150,50,16,'#e2c35a'],[330,50,12,'#d8607a'],[352,92,10,'#8fa1c4'],[320,124,14,'#d8607a'],[158,150,12,'#e2c35a'],[352,186,12,'#c9c0b4'],[180,210,9,'#8fa1c4'],[138,100,7,'#8fa1c4'],[262,40,10,'#d8a0a8']]
+};
+document.querySelectorAll('[data-stars]').forEach(box => {
+  starSets[box.dataset.stars].forEach(a => box.appendChild(star(...a)));
+});
+
+// --- scalloped circle frames ---
+document.querySelectorAll('[data-scallop]').forEach(el => {
+  const pts = [];
+  for (let i = 0; i < 360; i += 3){
+    const t = i * Math.PI / 180, r = 46 + 4 * Math.cos(t * 12);
+    pts.push(`${50 + r*Math.cos(t)}% ${50 + r*Math.sin(t)}%`);
+  }
+  el.style.clipPath = `polygon(${pts.join(',')})`;
+});
+
+// --- starburst ---
+(() => {
+  const pts = [], n = 22;
+  for (let i = 0; i < n; i++){
+    const t = i / n * Math.PI * 2, r = i % 2 ? 12 + Math.random()*6 : 34 + Math.random()*16;
+    pts.push(`${50 + r*Math.cos(t)}% ${50 + r*Math.sin(t)}%`);
+  }
+  $('#burst').style.clipPath = `polygon(${pts.join(',')})`;
+  for (let i = 0; i < 18; i++){
+    const d = document.createElement('div');
+    d.className = 'sparkle';
+    d.style.left = 60 + Math.random()*250 + 'px';
+    d.style.top = 50 + Math.random()*240 + 'px';
+    $('#sparkles').appendChild(d);
+  }
+})();
+
+// --- word clock (shows real time) ---
+(() => {
+  const words = ['Twelve','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven'];
+  const c = $('#clock'), R = 100;
+  words.forEach((w, i) => {
+    const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
+    const s = document.createElement('span');
+    s.textContent = w;
+    s.style.left = R * Math.cos(a) + 'px';
+    s.style.top = R * Math.sin(a) + 'px';
+    c.appendChild(s);
+  });
+  const hh = document.createElement('div'), mh = document.createElement('div'), hub = document.createElement('div');
+  hh.className = mh.className = 'hand'; hub.className = 'hub';
+  hh.style.cssText += 'width:44px;background:#3a3a3a';
+  mh.style.cssText += 'width:62px;background:#e6852f;height:1.5px';
+  c.append(hh, mh, hub);
+  function tick(){
+    const d = new Date(), m = d.getMinutes(), h = d.getHours() % 12 + m / 60;
+    hh.style.transform = `rotate(${h * 30 - 90}deg)`;
+    mh.style.transform = `rotate(${m * 6 - 90}deg)`;
+  }
+  tick(); setInterval(tick, 30000);
+})();
+
+// --- hbd dots forming the age digits ---
+(() => {
+  const P = {
+    '0':'M50 10 C5 10 5 150 50 150 C95 150 95 10 50 10',
+    '1':'M30 35 L55 10 L55 150',
+    '2':'M15 45 C15 5 85 5 85 45 C85 80 15 105 15 150 L88 150',
+    '3':'M15 28 C30 0 88 5 85 42 C83 68 55 76 42 78 C65 78 90 92 88 120 C85 160 28 160 14 132',
+    '4':'M68 150 L68 10 L10 108 L92 108',
+    '5':'M85 10 L28 10 L22 72 C42 56 88 60 88 106 C88 152 35 160 14 134',
+    '6':'M80 22 C60 2 14 14 14 92 C14 152 86 155 86 110 C86 68 30 70 15 98',
+    '7':'M10 10 L90 10 L42 150',
+    '8':'M50 78 C10 72 14 10 50 10 C86 10 90 72 50 78 C6 84 10 150 50 150 C90 150 94 84 50 78',
+    '9':'M86 58 C72 92 14 86 14 50 C14 8 86 6 86 56 C86 120 60 152 20 140'
+  };
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.style.cssText = 'position:absolute;width:0;height:0';
+  document.body.appendChild(svg);
+  const letters = ['h','b','d'], colors = ['#a9d3ec','#e0473b'];
+  const box = $('#hbdDots');
+  [...CONFIG.age].slice(0, 2).forEach((ch, k) => {
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', P[ch] || P['0']);
+    svg.appendChild(p);
+    const len = p.getTotalLength(), step = 22 / 1.0, scale = 1.0;
+    const ox = 300 + k * 110, oy = 80;
+    let j = 0;
+    for (let L = 0; L <= len; L += step){
+      const pt = p.getPointAtLength(L);
+      const d = document.createElement('div');
+      d.className = 'dot';
+      d.textContent = letters[j++ % 3];
+      d.style.background = colors[k];
+      d.style.left = ox + pt.x * scale + 'px';
+      d.style.top = oy + pt.y * scale * 1.05 + 'px';
+      box.appendChild(d);
+    }
+  });
+})();
+
+// --- book ---
+const pages = document.querySelectorAll('#book .page');
+const total = pages.length;
+const pageFlip = new St.PageFlip($('#book'), {
+  width: PW, height: PH, size: 'stretch',
+  minWidth: 260, maxWidth: 700, minHeight: 175, maxHeight: 472,
+  showCover: true, usePortrait: true, maxShadowOpacity: 0.35,
+  mobileScrollSupport: false, flippingTime: 900
+});
+pageFlip.loadFromHTML(pages);
+
+// scale fixed-size page designs to whatever size the book is
+const ro = new ResizeObserver(entries => {
+  for (const e of entries){
+    const inner = e.target.querySelector('.inner');
+    if (inner) inner.style.transform = `scale(${e.target.clientWidth / PW})`;
+  }
+});
+pages.forEach(p => ro.observe(p));
+
+const counter = $('#counter');
+function updateCounter(i){ counter.textContent = `${Math.max(1, i)} / ${total}`; }
+pageFlip.on('flip', e => { updateCounter(e.data); startMusic(); });
+updateCounter(0);
+
+// --- music (starts on first flip/tap) ---
+const bgm = $('#bgm');
+let musicTried = false;
+function startMusic(){
+  if (musicTried) return; musicTried = true;
+  bgm.play().catch(() => { musicTried = false; }); // ถ้าเล่นไม่ได้ จะลองใหม่ตอนแตะครั้งถัดไป
+}
+// เพลงเริ่มตอนแตะหรือปัดที่สมุด
+['pointerdown','pointerup','touchend','mousedown','click'].forEach(ev => $('#book').addEventListener(ev, startMusic, { capture: true }));
+
+// เปิดหน้าที่ต้องการได้ด้วย #เลขหน้า เช่น index.html#4
+const startAt = parseInt(location.hash.slice(1), 10);
+if (startAt > 0 && startAt < total){ pageFlip.turnToPage(startAt); updateCounter(startAt); }
+</script>
+</body>
+</html>
