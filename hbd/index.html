@@ -292,6 +292,21 @@
     <div class="essay-page"></div>
     <div class="essay-head" id="essayHead"></div>
     <div class="essay-body" id="essayBody"></div>
+  </div></div>
+  <!-- 9 เรียงความต่อ: รูปซ้าย + ข้อความที่ล้นจากหน้าก่อนมาต่อด้านขวา -->
+  <div class="page essay-left"><div class="inner">
+    <div class="essay-side" id="side2a" style="left:44px;top:60px;transform:rotate(-8deg)"></div>
+    <div class="essay-side" id="side2b" style="left:52px;top:100px;transform:rotate(-8deg)"></div>
+    <div class="essay-side" id="side2c" style="left:382px;top:240px;transform:rotate(6deg)"></div>
+    <div class="tall-snap">
+      <div class="ph" data-img="essay2" data-label="รูป"></div>
+      <div class="washi"></div>
+    </div>
+    <div class="stars" data-stars="essay"></div>
+  </div></div>
+  <div class="page"><div class="inner">
+    <div class="essay-page"></div>
+    <div class="essay-body" id="essayBody2" style="top:22px;text-indent:0"></div>
     <div class="essay-sign" id="essaySign"></div>
   </div></div>
 
@@ -316,39 +331,49 @@ const CONFIG = {
     big:    "images/big.jpg",      // หน้ารูปใหญ่ขาวดำ
     tin:    "images/tin.jpg",      // หน้าสมุดภาพ: รูปในกล่อง
     inside: "images/inside.jpg",   // ด้านในปก (ฝั่งซ้ายตอนเปิดปก)
-    essay:  "images/essay.jpg"     // หน้าเรียงความ: รูปฝั่งซ้าย
+    essay:  "images/essay.jpg",    // หน้าเรียงความ: รูปฝั่งซ้าย
+    essay2: "images/essay.jpg"     // หน้าเรียงความต่อ: รูปฝั่งซ้าย (ตอนนี้ใช้รูปเดียวกับหน้า 13)
   },
-  letter: `สุขสันต์วันเกิดนะ
-ขอบคุณที่เข้ามาในชีวิต
-ชีวิตดีขึ้นมาก
-ตั้งแต่มีเธออยู่ด้วย
-หวังว่าวันของเธอ
-จะวิเศษเหมือนตัวเธอ`,
+  letter: `สุขสันต์วันเกิดนะเอ่ยเอ๊ย
+มีความสุขมากๆนะเอ่ยเอ๊ย โตขึ้นอีกปีแล้วนะ อย่าแบกอะไรไว้คนเดียวนะ
+เธอไม่ได้อยู่คนเดียวบนโลกนะ ดูแลตัวเองดีๆด้วย ผมขอให้เอ่ยเอ๊ยประสบความสำเร็จในทุกเรื่องที่ตั้งใจ
+ขอบคุณนะ`,
   caption1: `หวังว่าชีวิตจะเต็มไปด้วยความสุข
 และพาเธอไปสู่ทุกสิ่งที่เธอควรจะได้รับ`,
   caption2: `ขอให้วันเกิดปีนี้
 นำพาเธอเข้าใกล้
 ความฝันทุกประการ
-เราจะอยู่ตรงนี้เสมอ
+ผมจะอยู่ตรงนี้เสมอ
 คอยเป็นกำลังใจ
-สุขสันต์วันเกิดนะ`,
-  // ---- หน้าเรียงความ (หน้าสุดท้าย) ----
+สุขสันต์วันเกิดนะไอ้อ้วน`,
+  // ---- หน้า 14: เรียงความ (ขวาของหน้า 13) ----
   essayHead: "Dear you,",
-  essay: `(พิมพ์คำอวยพรยาวๆ ตรงนี้ ขึ้นบรรทัดใหม่ได้ตามปกติ ตัวหนังสือจะย่อให้พอดีหน้าเอง)
-
-สุขสันต์วันเกิดนะ ปีนี้ขอให้เป็นปีที่ดีที่สุดของเธอ`,
+  essay: `ไม่รู้จะอวยพรอะไรให้เอ๊ยกลัวเธอซึ้งเกิน
+  สุขสันต์วันเกิดนะเอ๊ยเอ๊ย ขอโทษนะ ผมน่าจะมาไวไปเยอะเลย พอดีผมต้องไป
+  ผ่าตัดข้อเท้าคับ เลยอยากมาอวยพรก่อนกลัวจะหายไม่ทันเดินไม่ได้ เดี๋ยวมาส่งของไม่ทันวันเกิดอีก
+  เลยรีบมาส่งและอวยพรให้ก่อน จริงๆใจนึงก็อยากจะมาอวยพรเอ่ยเอ๊ยเป็นคนแรกนั้นแหละ555
+  มีความสุขมากๆนะ สุขภาพร่างกายแข็งแรงนะ อย่าฝืนตัวเองให้มันมากนะ พักผ่อนบ้าง
+  ดื่มน้ำให้มันมากๆ อยากให้เธอเที่ยวให้สนุก กินให้อ่ร่อย จริงๆผมก็อยากบอกอะไรให้มันมากกว่านี้นะ แต่กลัวเอ่ยเอ๊ยเสียอารมณ์`,
+  // ---- หน้า 17: เรียงความต่อ (ขวาของหน้า 16) ----
+  essay2: ` เอาเป็นว่าผมอยากให้เอ่ยเอ๊ยยิ้มเยอะๆนะ มีปัญหาอะไรบอกผมได้ทุกเรื่องจะเรื่องเงินหรือปัญหาอะไรต่างๆ
+  ที่ตัวเธอเองนั้นแบกไม่ไหวแล้วอยากให้มีคนมาแบกช่วย อยากให้เธอคิดถึงผมเป็นคนแรกนะ ผมแค่อยากช่วยเอ่ยเอ๊ย
+  เหมือนที่ผ่านมา ขอโทษนะพูดมากไปหน่อยพอดีผมก็ไม่เคยมาอวยพรหรือทำแบบนี้ให้เคยเลยไม่รู้ว่าต้องบอกหรืออวยพรอะไร
+  เอาเป็นว่ามีความสุขมากๆนะ ใช้ชีวิตให้เต็มที่ และขอให้ปลอดภัยนะอ้วน
+  ขอบคุณที่อ่านจนจบนะ ผมยังหวังดีกับเอ่ยเอ๊ยนะและจะทำตลอดไป ไม่ว่าจะในสถานะอะไรก็ตาม
+  ยิ้มเยอะๆนะเอ่ยเอ๊ย มีความสุขมากๆนะ จากหนุ่มอุดรคนเดิมนะ`,
   essaySign: "love, me ♡",
+  side2: ["happy", "birthday", "to you ♡"],   // ตัวหนังสือเอียงรอบรูป หน้าเรียงความต่อ
   tinNote: "สุขสันต์\nวันเกิด !",
   tape1: "so cute",
   tape2: "คนเก่ง",
   postcard1: `สุขสันต์วันเกิดนะ
-ขอให้ปีนี้เป็นปีที่ดีที่สุด
-มีแต่รอยยิ้ม ความสุข
-และเรื่องดีๆ ที่เธอ
-สมควรได้รับ`,
-  postcard2: `ขอบคุณทุกความทรงจำ
-อยู่ด้วยกันแบบนี้
-ไปนานๆ นะ
+ขอให้ปีนี้เป็นปีที่ดีเจอแต่ผู้คนดีๆ
+สถานที่ดีๆ เพื่อนดีๆ หรือคนรักดีๆนะ
+มีแต่รอยยิ้มความสุข
+และเรื่องดีๆที่เอ่ยเอ๊ยสมควรได้รับ
+`,
+  postcard2: `ขอบคุณนะสำหรับทุกอย่าง
+ผมคอยดูอยู่นะ เดี๋ยวสร้างบ้านรอไว้ให้นะไอ้อ้วน
 รักนะ ♡`
 };
 /* ================================================================ */
@@ -369,13 +394,33 @@ $('#pc1').textContent = CONFIG.postcard1;
 $('#pc2').textContent = CONFIG.postcard2;
 $('#essayHead').textContent = CONFIG.essayHead;
 $('#essayBody').textContent = CONFIG.essay;
+['#side2a', '#side2b', '#side2c'].forEach((id, i) => $(id).textContent = CONFIG.side2[i] || '');
 $('#essaySign').textContent = CONFIG.essaySign;
 // ย่อตัวหนังสือเรียงความจนพอดีหน้า
 document.fonts.ready.then(() => {
-  const b = $('#essayBody');
+  // ย่อตัวหนังสือจดหมายให้พอดีกระดาษ
+  const l = $('#letter');
+  l.style.overflow = 'hidden';
+  for (let f = 11.5; f >= 7; f -= .5){
+    l.style.fontSize = f + 'px';
+    if (l.scrollHeight <= l.clientHeight) break;
+  }
+  // ย่อตัวหนังสือโปสการ์ดให้พอดีการ์ด
+  const pc = document.querySelector('.postcard'), cols = document.querySelector('.pc-cols');
+  pc.style.overflow = 'hidden';
+  for (let f = 10.5; f >= 6.5; f -= .5){
+    cols.style.fontSize = f + 'px';
+    if (pc.scrollHeight <= pc.clientHeight) break;
+  }
+  // เรียงความหน้า 14 และหน้า 17: ใส่ข้อความแต่ละหน้า แล้วย่อตัวหนังสือให้พอดี (สองหน้าขนาดเท่ากัน)
+  const clean = s => s.split('\n').map(x => x.trim()).join('\n');
+  const b1 = $('#essayBody'), b2 = $('#essayBody2');
+  b1.textContent = clean(CONFIG.essay);
+  b2.textContent = clean(CONFIG.essay2);
+  const fits = el => el.scrollHeight <= el.clientHeight;
   for (let f = 14; f >= 8; f -= .5){
-    b.style.fontSize = f + 'px';
-    if (b.scrollHeight <= b.clientHeight) break;
+    b1.style.fontSize = b2.style.fontSize = f + 'px';
+    if (fits(b1) && fits(b2)) break;
   }
 });
 
